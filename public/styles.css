@@ -60,6 +60,12 @@ header h1 {
 
 .or { text-align: center; color: var(--muted); margin: 8px 0; }
 
+/* Dimming and interactivity lock for mutually exclusive sections */
+.field.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .actions { display: flex; gap: 12px; margin-top: 10px; }
 button {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -88,4 +94,3 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 footer { margin-top: 28px; color: var(--muted); }
-

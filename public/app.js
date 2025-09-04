@@ -3,19 +3,31 @@ const fileInput = document.getElementById('file')
 const urlInput = document.getElementById('url')
 const output = document.getElementById('output')
 const submitBtn = document.getElementById('submit')
+const fileField = document.getElementById('file-field')
+const urlField = document.getElementById('url-field')
 
 function enforceMutualExclusion() {
-  if (fileInput.files.length > 0) {
+  const hasFile = fileInput.files.length > 0
+  const hasUrl = urlInput.value.trim().length > 0
+
+  // If a file is uploaded, disable and dim the URL field
+  if (hasFile) {
     urlInput.value = ''
     urlInput.disabled = true
+    urlField.classList.add('is-disabled')
   } else {
     urlInput.disabled = false
+    urlField.classList.remove('is-disabled')
   }
-  if (urlInput.value.trim().length > 0) {
+
+  // If typing in URL, reset/disable/dim the file field
+  if (hasUrl) {
     fileInput.value = ''
     fileInput.disabled = true
+    fileField.classList.add('is-disabled')
   } else {
     fileInput.disabled = false
+    fileField.classList.remove('is-disabled')
   }
 }
 
@@ -39,6 +51,10 @@ form.addEventListener('submit', async (e) => {
     if (hasFile) fd.append('file', fileInput.files[0])
     if (hasUrl) fd.append('url', urlInput.value.trim())
 
+    // Reset the form immediately after pressing submit (per requirement)
+    form.reset()
+    enforceMutualExclusion()
+
     const res = await fetch('/api/snarkify', { method: 'POST', body: fd })
     if (!res.ok) {
       const err = await res.json().catch(() => ({}))
@@ -53,3 +69,5 @@ form.addEventListener('submit', async (e) => {
   }
 })
 
+// Initialize state on load
+enforceMutualExclusion()
