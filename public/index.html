@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>THE SNARKIFIER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>THE SNARKIFIER</h1>
+        <p class="tag">Upload something cringey. We’ll roast it.</p>
+      </header>
+      <section class="panel">
+        <form id="snark-form">
+          <div class="field">
+            <label for="file">Upload a document (image, PDF, Word):</label>
+            <input id="file" name="file" type="file" accept="image/*,.pdf,.doc,.docx" />
+          </div>
+          <div class="or">— or —</div>
+          <div class="field">
+            <label for="url">Enter a URL to roast:</label>
+            <input id="url" name="url" type="url" placeholder="https://example.com" />
+          </div>
+          <div class="actions">
+            <button id="submit" type="submit">Submit</button>
+          </div>
+          <p class="help">Choose either a file or a URL, not both.</p>
+        </form>
+      </section>
+      <section class="result">
+        <label for="output">Roast:</label>
+        <textarea id="output" readonly placeholder="Your roast will appear here..."></textarea>
+      </section>
+      <footer>
+        <small>Powered by OpenAI. No speech, just text.</small>
+      </footer>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+  </html>
+

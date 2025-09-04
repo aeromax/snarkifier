@@ -1,0 +1,21 @@
+{
+  "name": "snarkifier",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "openai": "^4.58.1",
+    "node-fetch": "^3.3.2"
+  },
+  "description": "A simply AI wrapper that will roast your most boring content for your delight.",
+  "main": "server.js",
+  "author": "Max Palmer",
+  "license": "MIT"
+}
